@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.dao.PatentDao">
+    <resultMap id="patentResultMap" type="Patent">
+        <id property="patentNumber" column="patentNumber"/>
+        <result property="patentName" column="patentName"/>
+        <result property="patentee" column="patentee"/>
+        <result property="patentField" column="patentField"/>
+        <result property="patentRegistrationYear" column="patentRegistrationYear"/>
+    </resultMap>
+
+    <insert id="addPatent" parameterType="Patent">
+        INSERT INTO patent
+        (patentNumber, patentName, patentee, patentField, patentRegistrationYear)
+        VALUES (#{patentNumber}, #{patentName}, #{patentee}, #{patentField}, #{patentRegistrationYear})
+    </insert>
+
+    <delete id="deletePatentByNumber" parameterType="int">
+        DELETE FROM patent WHERE patentNumber=#{patentNumber}
+    </delete>
+
+    <update id="updatePatent" parameterType="Patent">
+        UPDATE patent
+        SET patentName = #{patentName},patentee = #{patentee},
+            patentField = #{patentField},patentRegistrationYear = #{patentRegistrationYear}
+        WHERE  patentNumber = #{patentNumber}
+    </update>
+
+    <select id="queryPatentByNumber" resultType="Patent" parameterType="int">
+        SELECT patentNumber,patentName,patentee,patentField,patentRegistrationYear
+        FROM patent
+        WHERE patentNumber=#{patentNumber}
+    </select>
+
+    <select id="queryAllPatents" resultMap="patentResultMap">
+        SELECT patentNumber,patentName,patentee,patentField,patentRegistrationYear
+        FROM patent
+    </select>
+</mapper>
