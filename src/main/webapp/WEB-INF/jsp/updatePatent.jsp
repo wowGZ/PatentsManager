@@ -77,6 +77,10 @@
             </ul>
 
             <ul class="nav nav-sidebar">
+                <li><a href="patentNews.jsp">新闻专栏</a></li>
+            </ul>
+
+            <ul class="nav nav-sidebar">
                 <li><a href="/patent/fileExport">文件导出</a></li>
                 <li><a href="/patent/toFileImport">文件导入</a></li>
             </ul>
@@ -85,7 +89,44 @@
 </div>
 <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
     <h2 class="page-header">修改专利信息</h2>
-
+    <div>
+        <%--style="position: relative; display: table-cell;text-align: center; vertical-align: middle"--%>
+        <form class="form-signin" action="/patent/updatePatent" style="width: 300px; align-content: center">
+            <div class="row">
+                <h4>专利号</h4>
+                <label for="patentNumber" class="sr-only"></label>
+                <input type="text" id="patentNumber" name="patentNumber" class="form-control"
+                       value="${patent.patentNumber}" required autofocus>
+            </div>
+            <div class="row">
+                <h4>专利名称</h4>
+                <label for="patentName" class="sr-only"></label>
+                <input id="patentName" name="patentName" class="form-control" value="${patent.patentName}"
+                       required>
+            </div>
+            <div class="row">
+                <h4>专利申请人</h4>
+                <label for="patentee" class="sr-only"></label>
+                <input id="patentee" name="patentee" class="form-control" value="${patent.patentee}" required
+                       autofocus>
+            </div>
+            <div class="row">
+                <h4>专利领域</h4>
+                <label for="patentField" class="sr-only"></label>
+                <input id="patentField" name="patentField" class="form-control" value="${patent.patentField}"
+                       required>
+            </div>
+            <div class="row">
+                <h4>专利申请年份</h4>
+                <label for="patentRegistrationYear" class="sr-only"></label>
+                <input id="patentRegistrationYear" name="patentRegistrationYear" class="form-control"
+                       value="${patent.patentRegistrationYear}" required>
+            </div>
+            <br>
+            <button class="btn btn-lg btn-primary btn-block" type="submit">确定修改</button>
+            <a class="btn btn-lg btn-primary btn-block" href="/patent/allPatents">取消</a>
+        </form>
+    </div>
 </div>
 <!-- Bootstrap core JavaScript
 ================================================== -->

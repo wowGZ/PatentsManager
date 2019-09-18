@@ -80,6 +80,10 @@
             </ul>
 
             <ul class="nav nav-sidebar">
+                <li><a href="/patent/toPatentNews">新闻专栏</a></li>
+            </ul>
+
+            <ul class="nav nav-sidebar">
                 <li><a href="/patent/fileExport">文件导出</a></li>
                 <li><a href="/patent/toFileImport">文件导入</a></li>
             </ul>
@@ -87,6 +91,27 @@
     </div>
 </div>
 <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
+    <div class="row marketing">
+        <div class="row">
+            <h2 class="sub-header">专利新闻</h2>
+        </div>
+
+        <div class="col-lg-4">
+            <h2>Safari bug</h2>
+            <p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui. </p>
+            <p><a class="btn btn-default" href="#" role="button">阅读全部 &raquo;</a></p>
+        </div>
+        <div class="col-lg-4">
+            <h2>Heading</h2>
+            <p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui. </p>
+            <p><a class="btn btn-default" href="#" role="button">阅读全部 &raquo;</a></p>
+        </div>
+        <div class="col-lg-4">
+            <h2>Heading</h2>
+            <p>Donec sed odio dui. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Vestibulum id ligula porta felis euismod semper. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa.</p>
+            <p><a class="btn btn-default" href="#" role="button">阅读全部 &raquo;</a></p>
+        </div>
+    </div>
     <h2 class="page-header">全部专利信息</h2>
     <div class="table-responsive">
         <table class="table table-striped">
@@ -109,8 +134,8 @@
                     <td class="text-center">${patent.patentField}</td>
                     <td class="text-center">${patent.patentRegistrationYear}</td>
                     <td class="text-center">
-                        <a class="btn btn-primary" href="/patent/toUpdatePatent" >修改</a>
-                        <a class="btn btn-primary" href="/patent/toDeletePatent" >删除</a>
+                        <a class="btn btn-primary" href="/patent/toUpdatePatent/${patent.patentNumber}" >修改</a>
+                        <a class="btn btn-primary" href="/patent/toDeletePatent/${patent.patentNumber}" >删除</a>
                     </td>
                 </tr>
             </c:forEach>

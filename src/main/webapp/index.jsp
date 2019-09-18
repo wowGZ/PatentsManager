@@ -36,7 +36,7 @@
 </head>
 <body>
     <div class="container" style="height: 300px; width: 300px; position: relative; top: 50%; margin-top: -200px">
-        <form class="form-signin" >
+        <form  class="form-signin" >
             <h2 class="form-signin-heading" style="text-align: center">专利后台管理系统</h2>
             <br>
             <label for="adminNumber" class="sr-only" >管理员帐号</label>

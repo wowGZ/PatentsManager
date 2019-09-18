@@ -2,7 +2,7 @@
   Created by IntelliJ IDEA.
   User: WowGz
   Date: 2019/9/12/012
-  Time: 20:17
+  Time: 16:09
   To change this template use File | Settings | File Templates.
 --%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
@@ -22,7 +22,9 @@
     <!-- 上述3个meta标签*必须*放在最前面，任何其他内容都*必须*跟随其后！ -->
     <meta name="description" content="">
     <meta name="author" content="">
-    <title>删除专利信息</title>
+
+    <title>专利信息管理系统</title>
+
     <!-- Bootstrap core CSS -->
     <link href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
 
@@ -41,6 +43,7 @@
     <script src="https://cdn.bootcss.com/html5shiv/3.7.3/html5shiv.min.js"></script>
     <script src="https://cdn.bootcss.com/respond.js/1.4.2/respond.min.js"></script>
     <![endif]-->
+
 </head>
 <body>
 <%--头部导航栏--%>
@@ -58,7 +61,7 @@
         </div>
         <div id="navbar" class="navbar-collapse collapse">
             <ul class="nav navbar-nav navbar-right">
-                <%--<li><a>欢迎您！管理员<%=request.getAttribute("adminNumber")%></a></li>--%>
+                <li><a>欢迎您！管理员<%=request.getAttribute("adminNumber")%></a></li>
                 <li><a href="#">个人中心</a></li>
             </ul>
             <%--<p class="navbar-right " style="text-align: center;color: grey;position: relative;top: 50%;">欢迎您！管理员<%=request.getAttribute("adminNumber")%></p>--%>
@@ -70,14 +73,14 @@
     <div class="row">
         <div class="col-sm-3 col-md-2 sidebar">
             <ul class="nav nav-sidebar">
-                <li><a href="/patent/allPatents">总览</a></li>
+                <li class="active"><a href="/patent/allPatents">总览</a></li>
                 <li><a href="/patent/toAddPatent">添加专利信息</a></li>
                 <%--<li><a href="/patent/toUpdatePatent">修改专利信息</a></li>--%>
-                <li class="active"><a href="">删除专利信息</a></li>
+                <%--<li><a href="/patent/toDeletePatent">删除专利信息</a></li>--%>
             </ul>
 
             <ul class="nav nav-sidebar">
-                <li><a href="patentNews.jsp">新闻专栏</a></li>
+                <li><a href="">新闻专栏</a></li>
             </ul>
 
             <ul class="nav nav-sidebar">
@@ -88,45 +91,26 @@
     </div>
 </div>
 <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
-    <h2 class="page-header">删除专利信息</h2>
-    <div>
-        <%--style="position: relative; display: table-cell;text-align: center; vertical-align: middle"--%>
-        <form class="form-signin" action="/patent/deletePatent" style="width: 300px; align-content: center">
-            <p class="text-danger">确定删除以下信息？</p>
-            <div class="row">
-                <h4>专利号</h4>
-                <label for="patentNumber" class="sr-only"></label>
-                <input readonly type="text" id="patentNumber" name="patentNumber" class="form-control"
-                       value="${patent.patentNumber}" required autofocus>
-            </div>
-            <div class="row">
-                <h4>专利名称</h4>
-                <label for="patentName" class="sr-only"></label>
-                <input readonly id="patentName" name="patentName" class="form-control" value="${patent.patentName}"
-                       required>
-            </div>
-            <div class="row">
-                <h4>专利申请人</h4>
-                <label for="patentee" class="sr-only"></label>
-                <input readonly id="patentee" name="patentee" class="form-control" value="${patent.patentee}" required
-                       autofocus>
-            </div>
-            <div class="row">
-                <h4>专利领域</h4>
-                <label for="patentField" class="sr-only"></label>
-                <input readonly id="patentField" name="patentField" class="form-control" value="${patent.patentField}"
-                       required>
-            </div>
-            <div class="row">
-                <h4>专利申请年份</h4>
-                <label for="patentRegistrationYear" class="sr-only"></label>
-                <input readonly id="patentRegistrationYear" name="patentRegistrationYear" class="form-control"
-                       value="${patent.patentRegistrationYear}" required>
-            </div>
-            <br>
-            <button class="btn btn-lg btn-primary btn-block" type="submit">确定删除</button>
-            <a class="btn btn-lg btn-primary btn-block" href="/patent/allPatents">取消</a>
-        </form>
+    <div class="row marketing">
+        <div class="row">
+            <h2 class="page-header">专利新闻</h2>
+        </div>
+
+        <div class="col-lg-4">
+            <h2>Safari bug</h2>
+            <p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui. </p>
+            <p><a class="btn btn-default" href="#" role="button">阅读全部 &raquo;</a></p>
+        </div>
+        <div class="col-lg-4">
+            <h2>Heading</h2>
+            <p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui. </p>
+            <p><a class="btn btn-default" href="#" role="button">阅读全部 &raquo;</a></p>
+        </div>
+        <div class="col-lg-4">
+            <h2>Heading</h2>
+            <p>Donec sed odio dui. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Vestibulum id ligula porta felis euismod semper. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa.</p>
+            <p><a class="btn btn-default" href="#" role="button">阅读全部 &raquo;</a></p>
+        </div>
     </div>
 </div>
 <!-- Bootstrap core JavaScript

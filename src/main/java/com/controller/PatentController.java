@@ -36,6 +36,11 @@ public class PatentController {
     @Autowired
     private PatentService patentService;
 
+    @RequestMapping("/toPatentNews")
+    public String toPatentNews(){
+        return "patentNews";
+    }
+
     @RequestMapping("/fileExport")
     public void fileExport(HttpServletResponse response){
         List<Patent> list = patentService.queryAllPatents();
@@ -83,8 +88,6 @@ public class PatentController {
         } catch (Exception e) {
             e.printStackTrace();
         }
-
-
         return "redirect:/patent/allPatents";
     }
     @RequestMapping("/allPatents")
@@ -105,27 +108,27 @@ public class PatentController {
         return "redirect:/patent/toAddPatent";
     }
 
-    @RequestMapping("/toDeletePatent")
-    public String toDeletePatent(){
+    @RequestMapping("/toDeletePatent/{patentNumber}")
+    public String toDeletePatent(Model model, @PathVariable("patentNumber") int patentNumber){
+        model.addAttribute("patent", patentService.queryPatentByNumber(patentNumber));
         return "deletePatent";
     }
 
     @RequestMapping("/deletePatent")
-    public String deletePatent(int patentNumber) {
-        patentService.deletePatentByNumber(patentNumber);
-        return "redirect:/patent/toDeletePatent";
+    public String deletePatent(Patent patent) {
+        patentService.deletePatentByNumber(patent.getPatentNumber());
+        return "redirect:/patent/allPatents";
     }
 
-    @RequestMapping("toUpdatePatent")
-    public String toUpdatePatent() {
+    @RequestMapping("/toUpdatePatent/{patentNumber}")
+    public String toUpdatePatent(Model model, @PathVariable("patentNumber") int patentNumber) {
+        model.addAttribute("patent", patentService.queryPatentByNumber(patentNumber));
         return "updatePatent";
     }
 
     @RequestMapping("/updatePatent")
-    public String updatePatent(Model model, Patent patent) {
+    public String updatePatent(Patent patent) {
         patentService.updatePatent(patent);
-        patent = patentService.queryPatentByNumber(patent.getPatentNumber());
-        model.addAttribute("patent", patent);
-        return "redirect:/patent/updatePatent";
+        return "redirect:/patent/allPatents";
     }
 }

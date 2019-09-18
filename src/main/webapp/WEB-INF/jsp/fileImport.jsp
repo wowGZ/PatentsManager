@@ -74,6 +74,10 @@
             </ul>
 
             <ul class="nav nav-sidebar">
+                <li><a href="patentNews.jsp">新闻专栏</a></li>
+            </ul>
+
+            <ul class="nav nav-sidebar">
                 <li><a href="/patent/fileExport">文件导出</a></li>
                 <li><a href="">文件导入</a></li>
             </ul>

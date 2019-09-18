@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.dao.NewsDao">
+    <resultMap id="newsResultMap" type="News">
+        <id property="id" column="id"/>
+        <result property="newsTitle" column="newsTitle"/>
+        <result property="newsDigest" column="newsDigest"/>
+        <result property="newsContent" column="newsTime"/>
+        <result property="newsTime" column="newsTime"/>
+    </resultMap>
+
+    <insert id="addNews" parameterType="News">
+        INSERT INTO news
+        (id, newsTitle, newsDigest, newsContent, newsTime)
+        VALUES (#{id},#{newsTitle}, #{newsDigest}, #{newsContent}, #{newsTime})
+    </insert>
+
+    <delete id="deleteNewsByNumber" parameterType="int">
+        DELETE FROM news WHERE id=#{id}
+    </delete>
+
+    <update id="updateNews" parameterType="News">
+        UPDATE news
+        SET newsTitle = #{newsTitle},newsDigest = #{newsDigest},
+            newsContent = #{newsContent},newsTime = #{newsTime}
+        WHERE  id = #{id}
+    </update>
+
+    <select id="queryNewsById" resultType="News" parameterType="int">
+        SELECT id, newsTitle, newsDigest, newsContent, newsTime
+        FROM news
+        WHERE id=#{id}
+    </select>
+
+    <select id="queryAllNews" resultMap="newsResultMap">
+        SELECT newsTitle, newsDigest, newsContent, newsTime
+        FROM news
+    </select>
+
+
+
+</mapper>
