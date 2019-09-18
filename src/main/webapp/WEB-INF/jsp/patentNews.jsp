@@ -61,7 +61,7 @@
         </div>
         <div id="navbar" class="navbar-collapse collapse">
             <ul class="nav navbar-nav navbar-right">
-                <li><a>欢迎您！管理员<%=request.getAttribute("adminNumber")%></a></li>
+                <%--<li><a>欢迎您！管理员<%=request.getAttribute("adminNumber")%></a></li>--%>
                 <li><a href="#">个人中心</a></li>
             </ul>
             <%--<p class="navbar-right " style="text-align: center;color: grey;position: relative;top: 50%;">欢迎您！管理员<%=request.getAttribute("adminNumber")%></p>--%>
@@ -73,14 +73,16 @@
     <div class="row">
         <div class="col-sm-3 col-md-2 sidebar">
             <ul class="nav nav-sidebar">
-                <li class="active"><a href="/patent/allPatents">总览</a></li>
+                <li><a href="/patent/allPatents">总览</a></li>
                 <li><a href="/patent/toAddPatent">添加专利信息</a></li>
                 <%--<li><a href="/patent/toUpdatePatent">修改专利信息</a></li>--%>
                 <%--<li><a href="/patent/toDeletePatent">删除专利信息</a></li>--%>
             </ul>
 
             <ul class="nav nav-sidebar">
-                <li><a href="">新闻专栏</a></li>
+                <li class="active"><a href="/patent/toPatentNews">新闻专栏</a></li>
+                <li><a href="/news/toAllNews">新闻总览</a></li>
+                <li><a href="/news/toAddNews">添加新闻</a></li>
             </ul>
 
             <ul class="nav nav-sidebar">
@@ -95,22 +97,16 @@
         <div class="row">
             <h2 class="page-header">专利新闻</h2>
         </div>
-
-        <div class="col-lg-4">
-            <h2>Safari bug</h2>
-            <p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui. </p>
-            <p><a class="btn btn-default" href="#" role="button">阅读全部 &raquo;</a></p>
-        </div>
-        <div class="col-lg-4">
-            <h2>Heading</h2>
-            <p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui. </p>
-            <p><a class="btn btn-default" href="#" role="button">阅读全部 &raquo;</a></p>
-        </div>
-        <div class="col-lg-4">
-            <h2>Heading</h2>
-            <p>Donec sed odio dui. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Vestibulum id ligula porta felis euismod semper. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa.</p>
-            <p><a class="btn btn-default" href="#" role="button">阅读全部 &raquo;</a></p>
-        </div>
+        <c:forEach var="news" items="${requestScope.get('list')}" varStatus="status">
+            <div class="col-lg-4">
+                <h2>${news.newsTitle}</h2>
+                <p>${news.newsDigest}</p>
+                <p>${news.newsTime}</p>
+                <br>
+                <p class="pull-right"><a class="btn btn-default" href="/news/newsDetail/${news.id}" role="button">阅读全部 &raquo;</a></p>
+            </div>
+        </c:forEach>
+        <a href=""></a>
     </div>
 </div>
 <!-- Bootstrap core JavaScript

@@ -11,7 +11,7 @@ public class News {
     private int id;
     private String newsTitle;
     private String newsDigest;
-    private String newContent;
+    private String newsContent;
     private String newsTime;
 
     public int getId() {
@@ -38,12 +38,12 @@ public class News {
         this.newsDigest = newsDigest;
     }
 
-    public String getNewContent() {
-        return newContent;
+    public String getNewsContent() {
+        return newsContent;
     }
 
-    public void setNewContent(String newContent) {
-        this.newContent = newContent;
+    public void setNewsContent(String newContent) {
+        this.newsContent = newContent;
     }
 
     public String getNewsTime() {

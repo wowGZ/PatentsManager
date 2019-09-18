@@ -58,7 +58,6 @@
         </div>
         <div id="navbar" class="navbar-collapse collapse">
             <ul class="nav navbar-nav navbar-right">
-                <li><a>欢迎您！管理员<%=request.getAttribute("adminNumber")%></a></li>
                 <li><a href="#">个人中心</a></li>
             </ul>
             <%--<p class="navbar-right " style="text-align: center;color: grey;position: relative;top: 50%;">欢迎您！管理员<%=request.getAttribute("adminNumber")%></p>--%>
@@ -77,7 +76,9 @@
             </ul>
 
             <ul class="nav nav-sidebar">
-                <li><a href="patentNews.jsp">新闻专栏</a></li>
+                <li><a href="/patent/toPatentNews">新闻专栏</a></li>
+                <li><a href="/news/toAllNews">新闻总览</a></li>
+                <li><a href="/news/toAddNews">添加新闻</a></li>
             </ul>
 
             <ul class="nav nav-sidebar">

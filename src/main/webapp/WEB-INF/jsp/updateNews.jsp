@@ -1,8 +1,8 @@
 <%--
   Created by IntelliJ IDEA.
   User: WowGz
-  Date: 2019/9/12/012
-  Time: 16:09
+  Date: 2019/9/18/018
+  Time: 21:36
   To change this template use File | Settings | File Templates.
 --%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
@@ -22,9 +22,7 @@
     <!-- 上述3个meta标签*必须*放在最前面，任何其他内容都*必须*跟随其后！ -->
     <meta name="description" content="">
     <meta name="author" content="">
-
-    <title>专利信息管理系统</title>
-
+    <title>修改新闻信息</title>
     <!-- Bootstrap core CSS -->
     <link href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
 
@@ -43,7 +41,6 @@
     <script src="https://cdn.bootcss.com/html5shiv/3.7.3/html5shiv.min.js"></script>
     <script src="https://cdn.bootcss.com/respond.js/1.4.2/respond.min.js"></script>
     <![endif]-->
-
 </head>
 <body>
 <%--头部导航栏--%>
@@ -61,8 +58,6 @@
         </div>
         <div id="navbar" class="navbar-collapse collapse">
             <ul class="nav navbar-nav navbar-right">
-                <li><a>欢迎您！管理员<%=request.getAttribute("adminNumber")%>
-                </a></li>
                 <li><a href="#">个人中心</a></li>
             </ul>
             <%--<p class="navbar-right " style="text-align: center;color: grey;position: relative;top: 50%;">欢迎您！管理员<%=request.getAttribute("adminNumber")%></p>--%>
@@ -74,9 +69,9 @@
     <div class="row">
         <div class="col-sm-3 col-md-2 sidebar">
             <ul class="nav nav-sidebar">
-                <li class="active"><a href="/patent/allPatents">总览</a></li>
+                <li><a href="/patent/allPatents">总览</a></li>
                 <li><a href="/patent/toAddPatent">添加专利信息</a></li>
-                <%--<li><a href="/patent/toUpdatePatent">修改专利信息</a></li>--%>
+
                 <%--<li><a href="/patent/toDeletePatent">删除专利信息</a></li>--%>
             </ul>
 
@@ -84,6 +79,7 @@
                 <li><a href="/patent/toPatentNews">新闻专栏</a></li>
                 <li><a href="/news/toAllNews">新闻总览</a></li>
                 <li><a href="/news/toAddNews">添加新闻</a></li>
+                <li class="active"><a href="">修改新闻</a></li>
             </ul>
 
             <ul class="nav nav-sidebar">
@@ -94,64 +90,45 @@
     </div>
 </div>
 <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
-    <div class="row marketing">
-        <h2 class="page-header">专利新闻</h2>
-        <div class="col-lg-4">
-            <h2>Safari bug</h2>
-            <p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris
-                condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis
-                euismod. Donec sed odio dui. </p>
-            <p><a class="btn btn-default" href="#" role="button">阅读全部 &raquo;</a></p>
-        </div>
-        <div class="col-lg-4">
-            <h2>Heading</h2>
-            <p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris
-                condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis
-                euismod. Donec sed odio dui. </p>
-            <p><a class="btn btn-default" href="#" role="button">阅读全部 &raquo;</a></p>
-        </div>
-        <div class="col-lg-4">
-            <h2>Heading</h2>
-            <p>Donec sed odio dui. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Vestibulum id ligula
-                porta felis euismod semper. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut
-                fermentum massa.</p>
-            <p><a class="btn btn-default" href="#" role="button">阅读全部 &raquo;</a></p>
-        </div>
-    </div>
-
+    <h2 class="page-header">修改新闻信息</h2>
     <div>
-        <h2 class="sub-header">全部专利信息</h2>
-        <div class="table-responsive">
-            <table class="table table-striped">
-                <thead>
-                <tr>
-                    <th class="text-center">专利号</th>
-                    <th class="text-center">专利名称</th>
-                    <th class="text-center">专利申请人</th>
-                    <th class="text-center">专利领域</th>
-                    <th class="text-center">专利申请年份</th>
-                    <th class="text-center">操作</th>
-                </tr>
-                </thead>
-                <tbody>
-                <c:forEach var="patent" items="${requestScope.get('list')}" varStatus="status">
-                    <tr>
-                        <td class="text-center">${patent.patentNumber}</td>
-                        <td class="text-center">${patent.patentName}</td>
-                        <td class="text-center">${patent.patentee}</td>
-                        <td class="text-center">${patent.patentField}</td>
-                        <td class="text-center">${patent.patentRegistrationYear}</td>
-                        <td class="text-center">
-                            <a class="btn btn-primary" href="/patent/toUpdatePatent/${patent.patentNumber}  ">修改</a>
-                            <a class="btn btn-primary" href="/patent/toDeletePatent/${patent.patentNumber}">删除</a>
-                        </td>
-                    </tr>
-                </c:forEach>
-                </tbody>
-            </table>
-        </div>
+        <%--style="position: relative; display: table-cell;text-align: center; vertical-align: middle"--%>
+        <form class="form-signin" action="/news/updateNews" style="width: 300px; align-content: center">
+            <div class="row">
+                <h4>新闻id</h4>
+                <label for="id" class="sr-only"></label>
+                <input type="text" id="id" name="id" class="form-control"
+                       value="${news.id}" required autofocus>
+            </div>
+            <div class="row">
+                <h4>新闻标题</h4>
+                <label for="newsTitle" class="sr-only"></label>
+                <input id="newsTitle" name="newsTitle" class="form-control" value="${news.newsTitle}"
+                       required>
+            </div>
+            <div class="row">
+                <h4>新闻摘要</h4>
+                <label for="newsDigest" class="sr-only"></label>
+                <input id="newsDigest" name="newsDigest" class="form-control" value="${news.newsDigest}" required
+                       autofocus>
+            </div>
+            <div class="row">
+                <h4>新闻内容</h4>
+                <label for="newsContent" class="sr-only"></label>
+                <textarea id="newsContent" name="newsContent" class="form-control"
+                          required>${news.newsContent}</textarea>
+            </div>
+            <div class="row">
+                <h4>新闻时间</h4>
+                <label for="newsTime" class="sr-only"></label>
+                <input id="newsTime" name="newsTime" class="form-control"
+                       value="${news.newsTime}" required>
+            </div>
+            <br>
+            <button class="btn btn-lg btn-primary btn-block" type="submit">确定修改</button>
+            <a class="btn btn-lg btn-primary btn-block" href="/news/toAllNews">取消</a>
+        </form>
     </div>
-
 </div>
 <!-- Bootstrap core JavaScript
 ================================================== -->
@@ -165,3 +142,4 @@
 <script src="../../assets/js/ie10-viewport-bug-workaround.js"></script>
 </body>
 </html>
+

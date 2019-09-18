@@ -80,7 +80,9 @@
             </ul>
 
             <ul class="nav nav-sidebar">
-                <li><a href="patentNews.jsp">新闻专栏</a></li>
+                <li><a href="/patent/toPatentNews">新闻专栏</a></li>
+                <li><a href="/news/toAllNews">新闻总览</a></li>
+                <li><a href="/news/toAddNews">添加新闻</a></li>
             </ul>
 
             <ul class="nav nav-sidebar">

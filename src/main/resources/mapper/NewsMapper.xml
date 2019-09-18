@@ -7,7 +7,7 @@
         <id property="id" column="id"/>
         <result property="newsTitle" column="newsTitle"/>
         <result property="newsDigest" column="newsDigest"/>
-        <result property="newsContent" column="newsTime"/>
+        <result property="newsContent" column="newsContent"/>
         <result property="newsTime" column="newsTime"/>
     </resultMap>
 
@@ -17,7 +17,7 @@
         VALUES (#{id},#{newsTitle}, #{newsDigest}, #{newsContent}, #{newsTime})
     </insert>
 
-    <delete id="deleteNewsByNumber" parameterType="int">
+    <delete id="deleteNewsById" parameterType="int">
         DELETE FROM news WHERE id=#{id}
     </delete>
 
@@ -35,7 +35,7 @@
     </select>
 
     <select id="queryAllNews" resultMap="newsResultMap">
-        SELECT newsTitle, newsDigest, newsContent, newsTime
+        SELECT id, newsTitle, newsDigest, newsContent, newsTime
         FROM news
     </select>
 

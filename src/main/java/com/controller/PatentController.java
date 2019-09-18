@@ -4,7 +4,9 @@ import cn.afterturn.easypoi.excel.ExcelExportUtil;
 import cn.afterturn.easypoi.excel.ExcelImportUtil;
 import cn.afterturn.easypoi.excel.entity.ExportParams;
 import cn.afterturn.easypoi.excel.entity.ImportParams;
+import com.pojo.News;
 import com.pojo.Patent;
+import com.service.NewsService;
 import com.service.PatentService;
 import org.apache.poi.ss.usermodel.Workbook;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -36,8 +38,13 @@ public class PatentController {
     @Autowired
     private PatentService patentService;
 
+    @Autowired
+    private NewsService newsService;
+
     @RequestMapping("/toPatentNews")
-    public String toPatentNews(){
+    public String toPatentNews(Model model){
+        List<News> list = newsService.queryAllNews();
+        model.addAttribute("list", list);
         return "patentNews";
     }
 
