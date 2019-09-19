@@ -118,12 +118,12 @@
                 <textarea id="newsContent" name="newsContent" class="form-control"
                           required>${news.newsContent}</textarea>
             </div>
-            <div class="row">
-                <h4>新闻时间</h4>
-                <label for="newsTime" class="sr-only"></label>
-                <input id="newsTime" name="newsTime" class="form-control"
-                       value="${news.newsTime}" required>
-            </div>
+            <%--<div class="row">--%>
+                <%--<h4>新闻时间</h4>--%>
+                <%--<label for="newsTime" class="sr-only"></label>--%>
+                <%--<input id="newsTime" name="newsTime" class="form-control"--%>
+                       <%--value="${news.newsTime}" required>--%>
+            <%--</div>--%>
             <br>
             <button class="btn btn-lg btn-primary btn-block" type="submit">确定修改</button>
             <a class="btn btn-lg btn-primary btn-block" href="/news/toAllNews">取消</a>

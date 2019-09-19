@@ -8,6 +8,9 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import java.text.SimpleDateFormat;
+import java.util.Date;
+
 /**
  * Created by WowGz
  * User: WowGz
@@ -34,6 +37,9 @@ public class NewsController {
 
     @RequestMapping("/addNews")
     String addNews(News news){
+        Date date = new Date();
+        SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+        news.setNewsTime(dateFormat.format(date));
         newsService.addNews(news);
         return "redirect:/news/toAllNews";
     }
@@ -46,7 +52,11 @@ public class NewsController {
 
     @RequestMapping("/toUpdateNews/{id}")
     String toUpdateNews(@PathVariable("id") int id, Model model){
-        model.addAttribute("news", newsService.queryNewsById(id));
+        News news = newsService.queryNewsById(id);
+        Date date = new Date();
+        SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+        news.setNewsTime(dateFormat.format(date));
+        model.addAttribute("news", news);
         return "updateNews";
     }
 
