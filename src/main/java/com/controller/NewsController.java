@@ -62,6 +62,9 @@ public class NewsController {
 
     @RequestMapping("/updateNews")
     String updateNews(News news){
+        Date date = new Date();
+        SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+        news.setNewsTime(dateFormat.format(date));
         newsService.updateNews(news);
         return "redirect:/news/toAllNews";
     }
