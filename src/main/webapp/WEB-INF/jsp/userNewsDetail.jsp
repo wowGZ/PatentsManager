@@ -79,12 +79,22 @@
     <h2 class="page-header">新闻详情</h2>
     <div class="blog-post" style="text-align: center">
         <h1 class="blog-post-title">${news.newsTitle}</h1>
+        <br>
         <p class="lead blog-description">${news.newsDigest}</p>
+        <br>
         <p>${news.newsContent}</p>
+        <br>
+        <br>
+        <br>
         <p class="pull-right" >${news.newsTime}</p>
     </div>
 </div>
-
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
 <hr class="featurette-divider">
 <!-- FOOTER -->
 <footer>
