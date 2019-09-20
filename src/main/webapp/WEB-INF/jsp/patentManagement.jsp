@@ -95,27 +95,18 @@
 </div>
 <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
     <div class="row marketing">
-        <h2 class="page-header">专利新闻</h2>
-        <div class="col-lg-4">
-            <h2>Safari bug</h2>
-            <p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris
-                condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis
-                euismod. Donec sed odio dui. </p>
-            <p><a class="btn btn-default" href="#" role="button">阅读全部 &raquo;</a></p>
-        </div>
-        <div class="col-lg-4">
-            <h2>Heading</h2>
-            <p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris
-                condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis
-                euismod. Donec sed odio dui. </p>
-            <p><a class="btn btn-default" href="#" role="button">阅读全部 &raquo;</a></p>
-        </div>
-        <div class="col-lg-4">
-            <h2>Heading</h2>
-            <p>Donec sed odio dui. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Vestibulum id ligula
-                porta felis euismod semper. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut
-                fermentum massa.</p>
-            <p><a class="btn btn-default" href="#" role="button">阅读全部 &raquo;</a></p>
+        <div class="row">
+            <h2 class="page-header">专利新闻</h2>
+            <c:forEach var="news" items="${requestScope.get('newsList')}" varStatus="status" end="2">
+                <div class="col-lg-4">
+                    <h2>${news.newsTitle}</h2>
+                    <p>${news.newsDigest}</p>
+                    <p>${news.newsTime}</p>
+                    <br>
+                    <p class="pull-right"><a class="btn btn-default" href="/user/toNewsDetail/${news.id}" role="button">阅读全部
+                        &raquo;</a></p>
+                </div>
+            </c:forEach>
         </div>
     </div>
 

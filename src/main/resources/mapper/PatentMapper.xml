@@ -18,24 +18,101 @@
     </insert>
 
     <delete id="deletePatentByNumber" parameterType="int">
-        DELETE FROM patent WHERE patentNumber=#{patentNumber}
+        DELETE FROM patent
+        WHERE patentNumber = #{patentNumber}
     </delete>
 
     <update id="updatePatent" parameterType="Patent">
         UPDATE patent
-        SET patentName = #{patentName},patentee = #{patentee},
-            patentField = #{patentField},patentRegistrationYear = #{patentRegistrationYear}
-        WHERE  patentNumber = #{patentNumber}
+        SET patentName  = #{patentName}, patentee = #{patentee},
+            patentField = #{patentField}, patentRegistrationYear = #{patentRegistrationYear}
+        WHERE patentNumber = #{patentNumber}
     </update>
 
     <select id="queryPatentByNumber" resultType="Patent" parameterType="int">
-        SELECT patentNumber,patentName,patentee,patentField,patentRegistrationYear
+        SELECT
+            patentNumber,
+            patentName,
+            patentee,
+            patentField,
+            patentRegistrationYear
         FROM patent
-        WHERE patentNumber=#{patentNumber}
+        WHERE patentNumber = #{patentNumber}
+    </select>
+
+    <select id="queryPatentByName" resultMap="patentResultMap" parameterType="String">
+        SELECT
+            patentNumber,
+            patentName,
+            patentee,
+            patentField,
+            patentRegistrationYear
+        FROM patent
+        WHERE patentName = #{patentName}
+    </select>
+
+    <select id="queryPatentByPatentee" resultMap="patentResultMap" parameterType="String">
+        SELECT
+            patentNumber,
+            patentName,
+            patentee,
+            patentField,
+            patentRegistrationYear
+        FROM patent
+        WHERE patentee = #{patentee}
+    </select>
+
+    <select id="queryPatentByField" resultMap="patentResultMap" parameterType="String">
+        SELECT
+            patentNumber,
+            patentName,
+            patentee,
+            patentField,
+            patentRegistrationYear
+        FROM patent
+        WHERE patentField = #{patentField}
+    </select>
+
+    <select id="queryPatentByRegistrationYear" resultMap="patentResultMap" parameterType="int">
+        SELECT
+            patentNumber,
+            patentName,
+            patentee,
+            patentField,
+            patentRegistrationYear
+        FROM patent
+        WHERE patentRegistrationYear = #{patentRegistrationYear}
     </select>
 
     <select id="queryAllPatents" resultMap="patentResultMap">
-        SELECT patentNumber,patentName,patentee,patentField,patentRegistrationYear
+        SELECT
+            patentNumber,
+            patentName,
+            patentee,
+            patentField,
+            patentRegistrationYear
         FROM patent
     </select>
+
+    <select id="findPatents" parameterType="Map" resultMap="patentResultMap">
+        SELECT * FROM patent
+        <where>
+            <if test="patentNumber != null and patentNumber != ''">
+                OR patentNumber = #{patentNumber}
+            </if>
+            <if test="patentName != null and patentName != ''">
+                OR patentName like '%${patentName}%'
+            </if>
+            <if test="patentee != null and patentee != ''">
+                OR patentee like '%${patentee}%'
+            </if>
+            <if test="patentField != null and patentField != ''">
+                OR patentField like '%${patentField}%'
+            </if>
+            <if test="patentRegistrationYear != null and patentRegistrationYear != ''">
+                OR patentRegistrationYear = #{patentRegistrationYear}
+            </if>
+        </where>
+    </select>
+
 </mapper>

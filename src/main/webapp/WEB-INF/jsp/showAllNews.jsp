@@ -72,7 +72,7 @@
     <div class="row">
         <div class="col-sm-3 col-md-2 sidebar">
             <ul class="nav nav-sidebar">
-                <li class="active"><a href="/patent/allPatents">总览</a></li>
+                <li><a href="/patent/allPatents">总览</a></li>
                 <li><a href="/patent/toAddPatent">添加专利信息</a></li>
                 <%--<li><a href="/patent/toUpdatePatent">修改专利信息</a></li>--%>
                 <%--<li><a href="/patent/toDeletePatent">删除专利信息</a></li>--%>
@@ -80,7 +80,7 @@
 
             <ul class="nav nav-sidebar">
                 <li><a href="/patent/toPatentNews">新闻专栏</a></li>
-                <li><a href="/news/toAllNews">新闻总览</a></li>
+                <li class="active"><a href="/news/toAllNews">新闻总览</a></li>
                 <li><a href="/news/toAddNews">添加新闻</a></li>
             </ul>
 

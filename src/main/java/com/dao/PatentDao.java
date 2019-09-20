@@ -3,6 +3,7 @@ package com.dao;
 import com.pojo.Patent;
 
 import java.util.List;
+import java.util.Map;
 
 /**
  * Created by WowGz
@@ -20,5 +21,15 @@ public interface PatentDao {
 
     Patent queryPatentByNumber(int patentNumber);
 
+    List<Patent> queryPatentByName(String patentName);
+
+    List<Patent> queryPatentByPatentee(String patentee);
+
+    List<Patent> queryPatentByField(String patentField);
+
+    List<Patent> queryPatentByRegistrationYear(int patentRegistrationYear);
+
     List<Patent> queryAllPatents();
+
+    List<Patent> findPatents(Map<String,Object> map);
 }

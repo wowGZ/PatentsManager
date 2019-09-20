@@ -23,6 +23,8 @@ import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.OutputStream;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.List;
 
 /**
@@ -99,6 +101,14 @@ public class PatentController {
     }
     @RequestMapping("/allPatents")
     public String list(Model model) {
+        List<News> newsList = newsService.queryAllNews();
+        Collections.sort(newsList, new Comparator<News>() {
+            @Override
+            public int compare(News o1, News o2) {
+                return o2.getNewsTime().compareTo(o1.getNewsTime());
+            }
+        });
+        model.addAttribute("newsList", newsList);
         List<Patent> list = patentService.queryAllPatents();
         model.addAttribute("list", list);
         return "showAllPatents";

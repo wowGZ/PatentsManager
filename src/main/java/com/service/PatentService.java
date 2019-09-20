@@ -23,4 +23,8 @@ public interface PatentService {
 
     List<Patent> queryAllPatents();
 
+    List<Patent> queryPatentsByCondition(String condition);
+
+
+
 }

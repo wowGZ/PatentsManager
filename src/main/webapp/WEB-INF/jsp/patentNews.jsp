@@ -106,7 +106,6 @@
                 <p class="pull-right"><a class="btn btn-default" href="/news/newsDetail/${news.id}" role="button">阅读全部 &raquo;</a></p>
             </div>
         </c:forEach>
-        <a href=""></a>
     </div>
 </div>
 <!-- Bootstrap core JavaScript
