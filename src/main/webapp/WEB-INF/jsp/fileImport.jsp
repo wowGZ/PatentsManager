@@ -95,35 +95,6 @@
         <%--<a class="btn btn-default" id="click">导入</a>--%>
         <input class="btn btn-primary" type="submit" value="提交" >
     </form>
-    <script type="text/javascript">
-        // $("#click").click(function () {
-        //     $("#fileImport")[0].files=files;   //关键：将取到的文件赋值给input，用于ajax提交文件！！！
-        //     var formData = new FormData($("#fileImportForm")[0]);
-        //     $.ajax({
-        //         url : "/patent/fileImport",
-        //         type : 'POST',
-        //         data : formData,
-        //         // 告诉jQuery不要去处理发送的数据
-        //         processData : false,
-        //         // 告诉jQuery不要去设置Content-Type请求头
-        //         contentType : false,
-        //         async : true,
-        //         success : function(ret) {
-        //             //alert("上传成功")
-        //             if(ret){
-        //                 $("#trainInfoModal").modal("hide");
-        //                 layer.alert("保存成功")
-        //                 $('#orderTable').bootstrapTable("refresh");
-        //                 $("#trainInfoModal input").val("");
-        //                 $("#trainInfoModal textarea").val("");
-        //
-        //             }
-        //         }
-        //     });
-        //     return false;
-        // })
-
-    </script>
 </div>
 <!-- Bootstrap core JavaScript
 ================================================== -->
