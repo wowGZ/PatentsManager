@@ -93,7 +93,7 @@
             <input id="fileImport" type="file" class="form-control" name="fileImport">
         </div>
         <%--<a class="btn btn-default" id="click">导入</a>--%>
-        <input type="submit" value="提交" >
+        <input class="btn btn-primary" type="submit" value="提交" >
     </form>
     <script type="text/javascript">
         // $("#click").click(function () {
