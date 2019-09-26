@@ -4,6 +4,7 @@ import com.pojo.News;
 import com.pojo.Patent;
 import com.service.NewsService;
 import com.service.PatentService;
+import com.service.impl.PatentServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -65,6 +66,12 @@ public class CommonUserController {
     @RequestMapping("/toNews")
     public String toNews(Model model){
         List<News> list = newsService.queryAllNews();
+        Collections.sort(list, new Comparator<News>() {
+            @Override
+            public int compare(News o1, News o2) {
+                return o2.getNewsTime().compareTo(o1.getNewsTime());
+            }
+        });
         model.addAttribute("list", list);
         return "userNews";
     }
